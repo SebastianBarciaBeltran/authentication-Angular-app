@@ -1,0 +1,59 @@
+<div class="container">
+
+
+  <section class="picture"></section>
+
+  <section class="loginContainer">
+
+    <div class="titleContainer">
+      <svg id="lockIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+        class="bi bi-lock" viewBox="0 0 16 16">
+        <path
+          d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
+      </svg>
+
+      <div class="title">
+        <h1 id="principal">Acceso</h1>
+        <h5 id="secondary">Controlado por IP y Usuario</h5>
+      </div>
+
+    </div>
+
+    <p id="principalInfo">
+      Si no puedes acceder a tu perfil, ponte en contacto con el comercial que te suministro las credenciales de
+      acceso.
+    </p>
+
+
+    <form [formGroup]="loginForm" (submit)="login()" id="loginForm">
+
+      <div *ngIf="errorMessage" class="errorMessage">
+        credenciales no validas
+      </div>
+
+
+      <label class="inputTitle">Email <span class="required">*</span>
+        <alicunde-error *ngIf="reactiveFormService.invalidInput(loginForm, 'email')"
+          [message]="reactiveFormService.validatorsMessages(loginForm, 'email')" />
+
+      </label>
+      <input type="text" formControlName="email">
+
+      <label class="inputTitle">Password <span class="required">*</span>
+        <alicunde-error *ngIf="reactiveFormService.invalidInput(loginForm, 'password')"
+          [message]="reactiveFormService.validatorsMessages(loginForm, 'password')" />
+      </label>
+      <input type="password" formControlName="password">
+
+
+      <button class="button">ACCEDER</button>
+
+    </form>
+
+    <strong class="secondaryInfo">Todas las solicitudes realizadas a la intranet de Alicunde Systems son almacenadas
+      junto a su IP. Está
+      prohibido el uso de scripts por fuerza bruta o la suplantación de identidad.</strong>
+
+  </section>
+
+</div>
