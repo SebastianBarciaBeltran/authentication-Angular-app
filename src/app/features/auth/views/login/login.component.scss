@@ -1,0 +1,127 @@
+@import 'scss/media-queries';
+@import 'scss/variables';
+
+//? Normalmente suelo usar más class que id pero en este caso los usos para "mostrar" de que bueno,
+//? si somos conscientes de que los estilos que estas aplicando se van a repetir usamos la clase.
+//? si estamos 10% seguro que los estilos es unicamente para ese elemento podemos usar el id.
+
+.container {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  height: 100dvh; // dinamic viewport block -> best option for mobile and desktop
+}
+
+.picture {
+  background-image: url('/assets/images/login/login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 1.5rem;
+
+
+  .titleContainer {
+    display: flex;
+    gap: 1rem;
+
+    #lockIcon {
+      color: $primaryGrey;
+    }
+
+    .title {
+
+      #principal {
+        font-weight: 500;
+      }
+
+      #secondary {
+        color: $primaryGrey;
+        font-weight: 500;
+      }
+    }
+  }
+
+  #principalInfo {
+    font-size: 13px;
+    line-height: 25px;
+  }
+
+  #loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .errorMessage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $red;
+      color: $white;
+      font-weight: 500;
+      padding: 1rem;
+    }
+
+    .button {
+      cursor: pointer;
+      align-self: flex-end;
+      border-radius: 100px;
+      border: none;
+      padding: 8px 10px;
+      letter-spacing: 2px;
+      background: $primary;
+      color: $white;
+      width: 120px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+  }
+
+  .secondaryInfo {
+    border-left: 1px solid $inputGrey;
+    margin-left: 20px;
+    padding-left: 20px;
+    max-width: 350px;
+    font-size: 11px;
+    line-height: 15px;
+    color: $primaryGrey;
+    font-weight: normal;
+    display: block;
+    text-align: justify;
+  }
+
+}
+
+
+@include tables {
+  .container {
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 100%;
+  }
+}
+
+@include laptop {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100%;
+  }
+}
+
+@include laptop {
+  .container {
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 100%;
+  }
+}
+
+
+@include Extralarge {
+  .container {
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 100%;
+  }
+}
